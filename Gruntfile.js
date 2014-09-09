@@ -52,15 +52,15 @@ module.exports = function(grunt) {
     concat: {
       basic: {
         src: [
-          'src/js/components/lodash/dist/lodash.js',
-          'src/js/components/jquery/jquery.min.js',
-          'src/js/components/imagesloaded/imagesloaded.pkgd.min.js',
-          'src/js/components/isInViewport/lib/isInViewport.min.js',
-          'src/js/components/jquery.scrollTo/jquery.scrollTo.min.js',
-          'src/js/components/marked/lib/marked.js',
-          'src/js/app/**/*.js'
+          'src/components/lodash/dist/lodash.js',
+          'src/components/jquery/dist/jquery.js'
+          //'src/components/imagesloaded/imagesloaded.pkgd.min.js',
+          //'src/components/isInViewport/lib/isInViewport.min.js',
+          //'src/components/jquery.scrollTo/jquery.scrollTo.min.js',
+          //'src/components/marked/lib/marked.js',
+          //'src/app/**/*.js'
         ],
-        dest: 'dist/index.min.js',
+        dest: 'dist/js/main.min.js',
       }
     },
 
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
 
     autoprefixer: {
       single_file: {
-        src: 'dist/main.min.css'
+        src: 'dist/css/main.min.css'
       },
     },
 
@@ -94,9 +94,9 @@ module.exports = function(grunt) {
     uglify: {
       index: {
         src: [
-          'dist/index.min.js'
+          'dist/main.js'
         ],
-        dest: 'dist/index.min.js'
+        dest: 'dist/js/main.min.js'
       }
     },
 
@@ -104,9 +104,9 @@ module.exports = function(grunt) {
       main: {
         expand: true,
         cwd: 'src/',
-        src: '*.html',
+        src: ['*.html', 'assets/**/*'],
         dest: 'dist/',
-        flatten: true,
+        flatten: false,
         filter: 'isFile'
       },
     }

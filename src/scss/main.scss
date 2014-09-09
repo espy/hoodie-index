@@ -2,8 +2,34 @@
 
 $defaultHeight: 300px;
 
-h1{
-  color: black;
+@font-face {
+  font-family: 'FiraSans';
+  src: url('../assets/FiraSans/FiraSans-Light.eot');
+  src: url('../assets/FiraSans/FiraSans-Light.eot?#iefix') format('embedded-opentype'),
+       url('../assets/FiraSans/FiraSans-Light.woff') format('woff'),
+       url('../assets/FiraSans/FiraSans-Light.ttf') format('truetype'),
+       url('../assets/FiraSans/FiraSans-Light.svg#mozttregular') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'FiraSans';
+  src: url('../assets/FiraSans/FiraSans-Medium.eot');
+  src: url('../assets/FiraSans/FiraSans-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../assets/FiraSans/FiraSans-Medium.woff') format('woff'),
+       url('../assets/FiraSans/FiraSans-Medium.ttf') format('truetype'),
+       url('../assets/FiraSans/FiraSans-Medium.svg#mozttregular') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+body{
+  font-family: 'FiraSans';
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6{
+  margin-top: 0;
 }
 
 header{
@@ -12,6 +38,55 @@ header{
   nav{
     height: 50px;
     background: #F0EFEA;
+  }
+  .logo{
+    text-align: center;
+    &.animate .letter{
+      opacity: 1;
+      transform: scale(1.0);
+    }
+    .letter {
+      opacity: 0;
+      transform: scale(0.1);
+      transform-origin: center center;
+      -webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1); /* older webkit */
+      -webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+         -moz-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+           -o-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+              transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+      //animation: kaboom 2s ease-out;
+      &:nth-child(2) {
+        //animation-delay: 0.1s;
+        transition-delay: 0.1s;
+      }
+      &:nth-child(3) {
+        //animation-delay: 0.2s;
+        transition-delay: 0.2s;
+      }
+      &:nth-child(4) {
+        //animation-delay: 0.3s;
+        transition-delay: 0.3s;
+      }
+      &:nth-child(5) {
+        //animation-delay: 0.4s;
+        transition-delay: 0.4s;
+      }
+      &:nth-child(6) {
+        //animation-delay: 0.4s;
+        transition-delay: 0.4s;
+      }
+    }
+  }
+}
+
+@keyframes kaboom {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.0);
   }
 }
 
@@ -26,6 +101,7 @@ header{
     border: .5vw solid #FFF;
     flex: auto;
     box-sizing: border-box;
+    padding: 2vw 3vw;
     &.block-33{
       //width: 33.333%;
       width: 300px;
