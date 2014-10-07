@@ -23,13 +23,63 @@ $defaultHeight: 300px;
   font-style: normal;
 }
 
+// Colors
+
+// HoodieColors
+$hoodieBlue:     #312783;
+$hoodieGreen:    #0B8E36;
+$hoodieYellow:   #F9B233;
+$hoodieOrange:   #E94E1B;
+$hoodieBrown:    #693C10;
+$hoodieRed:      #BE1522;
+
+// Other colors:
+$white:          #FFFFFF;
+$darkGrey:       #414040;
+$lightGrey:      #DDDDDD;
+$nearBlack:      #282726;
+$mediumBrown:    #373435;
+$lightBeige:     #F8F5F3;
+
+$paleBlue:       #C2E0EB;
+$paleGreen:      #8FC2A2;
+$paleYellow:     #F7EF9D;
+$paleOrange:     #F6C28A;
+$paleBrown:      #9B8C7E;
+$paleRed:        #E0856B;
+
+$pageBackground: $lightBeige;
+$textColor:      $darkGrey;
+$negativeText:   $lightBeige;
+
 body{
   font-family: 'FiraSans';
   font-weight: 300;
+  color: $textColor;
+  max-width: 80em;
+  margin: 0 auto;
 }
 
 h1, h2, h3, h4, h5, h6{
   margin-top: 0;
+  &.noBottomMargin{
+    margin-bottom: 0;
+  }
+}
+
+a{
+  //text-decoration: none;
+  font-weight: bold;
+  color: $textColor;
+  &:hover{
+    color: $nearBlack;
+  }
+}
+
+.note{
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
 header{
@@ -38,9 +88,15 @@ header{
   nav{
     height: 50px;
     background: #F0EFEA;
+    text-align: right;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 50px;
+    padding: 0 1em;
   }
   .logo{
     text-align: center;
+    margin-top: 4.25em;
     &.animate .letter{
       opacity: 1;
       transform: scale(1.0);
@@ -54,25 +110,19 @@ header{
          -moz-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
            -o-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
               transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
-      //animation: kaboom 2s ease-out;
       &:nth-child(2) {
-        //animation-delay: 0.1s;
         transition-delay: 0.1s;
       }
       &:nth-child(3) {
-        //animation-delay: 0.2s;
         transition-delay: 0.2s;
       }
       &:nth-child(4) {
-        //animation-delay: 0.3s;
         transition-delay: 0.3s;
       }
       &:nth-child(5) {
-        //animation-delay: 0.4s;
         transition-delay: 0.4s;
       }
       &:nth-child(6) {
-        //animation-delay: 0.4s;
         transition-delay: 0.4s;
       }
     }
@@ -93,15 +143,48 @@ header{
 .row{
   display: flex;
   flex-wrap: wrap;
-  //padding: .5vw .5vw 0 .5vw;
-  align-items: flex-end;
+  margin: 0 .5vw;
+  align-items: stretch;
+  &.tall{
+    [class^="block"]{
+      min-height: 2*$defaultHeight;
+    }
+  }
+  &:first-of-type{
+    align-items: flex-end;
+  }
+  a[class^="block"]{
+    text-decoration: none;
+    &:hover{
+      box-shadow: 0px 0px 0px 6px $lightBeige inset;
+      &.blue{
+        box-shadow: 0px 0px 0px 6px $hoodieBlue inset;
+      }
+      &.green{
+        box-shadow: 0px 0px 0px 6px $hoodieGreen inset;
+      }
+      &.yellow{
+        box-shadow: 0px 0px 0px 6px $hoodieYellow inset;
+      }
+      &.orange{
+        box-shadow: 0px 0px 0px 6px $hoodieOrange inset;
+      }
+      &.brown{
+        box-shadow: 0px 0px 0px 6px $hoodieBrown inset;
+      }
+      &.red{
+        box-shadow: 0px 0px 0px 6px $hoodieRed inset;
+      }
+    }
+  }
   [class^="block"]{
     background: #F0EFEA;
-    height: $defaultHeight;
+    min-height: $defaultHeight;
     border: .5vw solid #FFF;
     flex: auto;
     box-sizing: border-box;
     padding: 2vw 3vw;
+    position: relative;
     &.block-33{
       //width: 33.333%;
       width: 300px;
@@ -118,7 +201,140 @@ header{
       flex-grow: 1;
     }
     &.extended{
-      height: 350px;
+      min-height: 350px;
+    }
+    &.transparent{
+      background-color: transparent;
+    }
+    &.fill{
+      color: $negativeText;
+      a{
+        color: $negativeText;
+        &:hover{
+          color: $white;
+        }
+      }
+      &.blue{
+        background-color: $hoodieBlue;
+      }
+      &.green{
+        background-color: $hoodieGreen;
+      }
+      &.yellow{
+        background-color: $hoodieYellow;
+      }
+      &.orange{
+        background-color: $hoodieOrange;
+      }
+      &.brown{
+        background-color: $hoodieBrown;
+      }
+      &.red{
+        background-color: $hoodieRed;
+      }
+    }
+    &.corner,
+    a[class^="block"]{
+      &:after{
+        content: "";
+        width: 0px;
+        height: 0px;
+        border-top: 25px solid $lightBeige;
+        border-right: 25px solid #FFF;
+        border-bottom: 25px solid #FFF;
+        border-left: 25px solid $lightBeige;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      &.blue:after{
+        border-top-color: $hoodieBlue;
+        border-left-color: $hoodieBlue;
+      }
+      &.green:after{
+        border-top-color: $hoodieGreen;
+        border-left-color: $hoodieGreen;
+      }
+      &.yellow:after{
+        border-top-color: $hoodieYellow;
+        border-left-color: $hoodieYellow;
+      }
+      &.orange:after{
+        border-top-color: $hoodieOrange;
+        border-left-color: $hoodieOrange;
+      }
+      &.brown:after{
+        border-top-color: $hoodieBrown;
+        border-left-color: $hoodieBrown;
+      }
+      &.red:after{
+        border-top-color: $hoodieRed;
+        border-left-color: $hoodieRed;
+      }
+    }
+    &[data-imageBG]{
+      background-size: cover;
+      background-position: 50% 50%;
+      font-size: 3em;
+      color: $white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      text-shadow: 0px 0px 100px rgba(0, 0, 0, 0.4);
+    }
+    &[data-imageBG="assets/espy_gregor.jpg"]{
+      background-image: url(../assets/espy_gregor.jpg);
+    }
+    &[data-imageBG="assets/ola.jpg"]{
+      background-image: url(../assets/ola.jpg);
     }
   }
+  .newsletter{
+    height: 100px;
+    min-height: 100px;
+    padding: 0;
+    overflow: hidden;
+    input[type="text"]{
+      height: 100%;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      margin: 0;
+      outline: 0;
+      font-size: 3em;
+      padding: 0.1em 3vw 0;
+    }
+  }
+}
+
+.testimonials{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  flex-direction: row;
+  align-items: center;
+  .testimonial{
+    flex-grow: 1;
+    width: 30%;
+    padding: 0 2vw;
+    blockquote{
+      margin: 0 0 1em 0;
+    }
+    img {
+      display: block;
+      float: right;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px #EEE;
+      margin-left: 1em;
+      width: 4.5em;
+    }
+  }
+}
+
+footer{
+  height: 100px;
+  background: #F0EFEA;
+  margin: 0.5vw 1vw;
+  padding: 2vw 3vw;
 }

@@ -53,12 +53,12 @@ module.exports = function(grunt) {
       basic: {
         src: [
           'src/components/lodash/dist/lodash.js',
-          'src/components/jquery/dist/jquery.js'
+          'src/components/jquery/dist/jquery.js',
           //'src/components/imagesloaded/imagesloaded.pkgd.min.js',
           //'src/components/isInViewport/lib/isInViewport.min.js',
           //'src/components/jquery.scrollTo/jquery.scrollTo.min.js',
           //'src/components/marked/lib/marked.js',
-          //'src/app/**/*.js'
+          'src/js/**/*.js'
         ],
         dest: 'dist/js/main.min.js',
       }

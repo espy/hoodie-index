@@ -1,0 +1,16 @@
+{
+  "evil": true,
+  "eqeqeq": false,
+  "regexdash": true,
+  "browser": true,
+  "wsh": true,
+  "trailing": true,
+  "sub": true,
+  "jquery": true,
+  "strict": false,
+  "asi": true,
+  "indent": 2,
+  "quotmark": "single",
+  "latedef": false,
+  "debug": true
+}
